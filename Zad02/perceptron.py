@@ -5,6 +5,7 @@ from sklearn import datasets
 from plotka import plot_decision_regions
 from sklearn.preprocessing import StandardScaler
 
+
 class Perceptron(object):
 
     def __init__(self, eta=0.01, n_iter=10):
@@ -51,33 +52,6 @@ class MultiClassPerceptron:
 
 def main():
     iris = datasets.load_iris()
-    print(iris.data)
-    X = iris.data[:, [2, 3]]
-    print(X)
-    y = iris.target
-    print(y)
-
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1, stratify=y)
-
-    #X_train_01_subset = X_train[(y_train == 0) | (y_train == 1)]
-    #y_train_01_subset = y_train[(y_train == 0) | (y_train == 1)]
-    # w perceptronie wyjście jest albo 1 albo -1
-    #y_train_01_subset[(y_train_01_subset == 0)] = -1
-    y_train[y_train != 2] = -1
-    y_train[y_train == 2] = 1
-    print(y_train)
-
-    ppn = Perceptron(eta=0.1, n_iter=1000)
-    ppn.fit(X_train, y_train)
-
-    plot_decision_regions(X=X_train, y=y_train, classifier=ppn)
-    plt.xlabel(r'$x_1$')
-    plt.ylabel(r'$x_2$')
-    plt.legend(loc='upper left')
-    plt.show()
-
-def main2():
-    iris = datasets.load_iris()
     X = iris.data[:, [2, 3]]
     y = iris.target
 
@@ -99,5 +73,4 @@ def main2():
 
 
 if __name__ == '__main__':
-    # main()
-    main2()
+    main()

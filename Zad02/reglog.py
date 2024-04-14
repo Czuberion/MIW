@@ -7,26 +7,6 @@ from sklearn.preprocessing import StandardScaler
 
 
 class LogisticRegressionGD(object):
-    # def __init__(self, eta=0.05, n_iter=100, random_state=1):
-    #     self.eta = eta
-    #     self.n_iter = n_iter
-    #     self.random_state = random_state
-    #
-    # def fit(self, X, y):
-    #     rgen = np.random.RandomState(self.random_state)
-    #     self.w_ = rgen.normal(loc=0.0, scale=0.01, size=1 + X.shape[1])
-    #     #self.cost_ = []
-    #
-    #     for i in range(self.n_iter):
-    #         net_input = self.net_input(X)
-    #         output = self.activation(net_input)
-    #         errors = (y - output)
-    #         self.w_[1:] += self.eta * X.T.dot(errors)
-    #         self.w_[0] += self.eta * errors.sum()
-    #         #cost = (-y.dot(np.log(output)) - ((1 - y).dot(np.log(1 - output))))
-    #         #self.cost_.append(cost)
-    #     return self
-
     def __init__(self, eta=0.05, n_iter=100, random_state=1, C=1.0):
         self.eta = eta
         self.n_iter = n_iter
@@ -90,34 +70,6 @@ class SoftmaxRegression:
 
 def main():
     iris = datasets.load_iris()
-    X = iris.data[:, [2, 3]]
-    y = iris.target
-    print(iris.target)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1, stratify=y)
-
-    # w regresji logarytmicznej wyjście przyjmuje wartości 0 lub 1 (prawdopodobieństwa)
-    #X_train_01_subset = X_train[(y_train == 0) | (y_train == 1)]
-    #y_train_01_subset = y_train[(y_train == 0) | (y_train == 1)]
-
-    print(y_train)
-    y_train[y_train != 2] = -1
-    y_train[y_train == 2] = 1
-    y_train[y_train == -1] = 0
-    print(y_train)
-
-    lrgd = LogisticRegressionGD(eta=0.05, n_iter=1000, random_state=1)
-    lrgd.fit(X_train, y_train)
-    print('prawdopodobieństwa:')
-    print(lrgd.activation(lrgd.net_input(X_train)))
-
-    plot_decision_regions(X=X_train, y=y_train, classifier=lrgd)
-    plt.xlabel(r'$x_1$')
-    plt.ylabel(r'$x_2$')
-    plt.legend(loc='upper left')
-    plt.show()
-
-def main2():
-    iris = datasets.load_iris()
     X = iris.data[:, [0, 1]]
     # X = iris.data[:, [0, 2]]
     # X = iris.data[:, [0, 3]]
@@ -145,5 +97,4 @@ def main2():
     plt.show()
 
 if __name__ == '__main__':
-    # main()
-    main2()
+    main()
