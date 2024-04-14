@@ -1,6 +1,6 @@
-#MIW
+# MIW
 Zadania z przedmiotu Metody Inżynierii Wiedzy
-##Zależności/Dependencies
--numpy
--matplotlib
--sklearn
+## Zależności/Dependencies
+- numpy
+- matplotlib
+- sklearn
